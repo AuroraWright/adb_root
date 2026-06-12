@@ -3,8 +3,8 @@
 #include <dlfcn.h>
 
 __BEGIN_DECLS
-__attribute__((constructor)) void stop_preload_leak() {
-    unsetenv("LD_PRELOAD");
+__attribute__((constructor)) static void stop_preload_leak() {
+    (void)unsetenv("LD_PRELOAD");
 }
 
 int __android_log_is_debuggable() { return 1; }
